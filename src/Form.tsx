@@ -67,7 +67,7 @@ function Form({
   return (
     <div
       className={`sticky bottom-0 w-full py-4 ${
-        darkMode ? "bg-[#121212]" : "bg-white"
+        darkMode ? "bg-[#0d0d0d]" : "bg-white"
       } border-t ${darkMode ? "border-gray-700" : "border-gray-200"}`}
     >
       <div className="container mx-auto px-4">
@@ -76,7 +76,7 @@ function Form({
             <div
               className={`flex items-center rounded-xl border ${
                 darkMode
-                  ? "border-gray-700 bg-gray-800"
+                  ? "border-gray-700 bg-[#0d0d0d]"
                   : "border-gray-300 bg-white"
               } overflow-hidden`}
             >
@@ -99,7 +99,7 @@ function Form({
                     displayTime !== null ? "pl-14" : "pl-4"
                   } py-3 outline-none ${
                     darkMode
-                      ? "bg-gray-800 text-white"
+                      ? "bg-[#0d0d0d] text-white"
                       : "bg-white text-gray-800"
                   }`}
                   disabled={loading}
