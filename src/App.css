@@ -1,0 +1,982 @@
+/* Add this to your CSS file */
+.typing-cursor {
+  display: inline-block;
+  width: 0.5em;
+  height: 1em;
+  background-color: #60a5fa;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Optional: Add this if you want the thinking section to auto-expand while actively thinking */
+.actively-thinking {
+  max-height: 1000px !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.4s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 1.5s infinite;
+}
+
+/* Add a subtle hover effect to the chat messages */
+.message-hover-effect {
+  transition: all 0.2s ease;
+}
+
+.message-hover-effect:hover {
+  transform: translateX(2px);
+  box-shadow: -3px 0 0 0 rgba(139, 92, 246, 0.5);
+}
+
+/* Add a gradient background to the app */
+.gradient-bg {
+  background: linear-gradient(135deg, #121212 0%, #1e1e2d 100%);
+}
+
+/* Add a cool focus effect for the textarea */
+.cool-focus {
+  transition: all 0.3s ease;
+}
+
+.cool-focus:focus {
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3);
+}
+
+/* Add a typing indicator animation */
+.typing-indicator {
+  display: inline-flex;
+}
+
+.typing-indicator span {
+  height: 8px;
+  width: 8px;
+  margin: 0 1px;
+  background-color: #a855f7;
+  border-radius: 50%;
+  display: inline-block;
+  animation: typing 1.4s infinite ease-in-out both;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+/* ChatGPT-style markdown formatting */
+.markdown-content {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Headings */
+.markdown-content h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 1.5rem 0 1rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.markdown-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 1.5rem 0 1rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.markdown-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0.75rem;
+}
+
+.markdown-content h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0.75rem;
+}
+
+/* Paragraphs and spacing */
+.markdown-content p {
+  margin: 0.75rem 0;
+}
+
+/* Lists */
+.markdown-content ul,
+.markdown-content ol {
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+}
+
+.markdown-content li {
+  margin: 0.375rem 0;
+}
+
+.markdown-content ul {
+  list-style-type: disc;
+}
+
+.markdown-content ol {
+  list-style-type: decimal;
+}
+
+.markdown-content ul ul,
+.markdown-content ol ul {
+  list-style-type: circle;
+}
+
+/* Blockquotes */
+.markdown-content blockquote {
+  border-left: 3px solid #6b7280;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.dark-mode .markdown-content blockquote {
+  border-left-color: #9ca3af;
+  color: #9ca3af;
+}
+
+/* Tables */
+.markdown-content table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+.markdown-content table th,
+.markdown-content table td {
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  text-align: left;
+}
+
+.markdown-content table th {
+  background-color: rgba(128, 128, 128, 0.1);
+  font-weight: 600;
+}
+
+.dark-mode .markdown-content table th {
+  background-color: rgba(128, 128, 128, 0.2);
+}
+
+/* Horizontal rule */
+.markdown-content hr {
+  height: 1px;
+  background-color: rgba(128, 128, 128, 0.2);
+  border: none;
+  margin: 1.5rem 0;
+}
+
+/* Links */
+.markdown-content a {
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.markdown-content a:hover {
+  text-decoration: underline;
+  color: #2563eb;
+}
+
+.dark-mode .markdown-content a {
+  color: #60a5fa;
+}
+
+.dark-mode .markdown-content a:hover {
+  color: #93c5fd;
+}
+
+/* Images */
+.markdown-content img {
+  max-width: 100%;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+/* Improve code block styling */
+.code-block {
+  margin: 1rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  font-size: 0.9rem;
+}
+
+/* Add a subtle animation for code blocks */
+.code-block {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.code-block:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced code block styling */
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #343a40;
+  color: #f8f9fa;
+  font-size: 0.8rem;
+  font-family: monospace;
+}
+
+.language-label {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+}
+
+.markdown-content pre {
+  margin: 0 !important;
+  border-radius: 0 0 8px 8px !important;
+  padding: 1rem !important;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.dark-mode .code-header {
+  background-color: #2d333b;
+}
+
+.light-mode .code-header {
+  background-color: #e9ecef;
+  color: #343a40;
+}
+
+/* Ensure code is properly formatted */
+.markdown-content code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.9em;
+  tab-size: 2;
+}
+
+/* Inline code styling */
+.markdown-content :not(pre) > code {
+  background-color: rgba(175, 184, 193, 0.2);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+  white-space: pre-wrap;
+}
+
+/* Dark mode adjustments */
+.dark-mode pre {
+  background-color: #1e1e1e !important;
+  border: 1px solid #333;
+}
+
+.dark-mode code {
+  color: #e6e6e6;
+}
+
+/* Light mode adjustments */
+.light-mode pre {
+  background-color: #f6f8fa !important;
+  border: 1px solid #ddd;
+}
+
+.light-mode code {
+  color: #24292e;
+}
+
+/* Add line numbers */
+.markdown-content pre.line-numbers {
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+}
+
+.markdown-content pre.line-numbers > code {
+  position: relative;
+}
+
+.markdown-content .line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  font-size: 100%;
+  left: -3.8em;
+  width: 3em;
+  letter-spacing: -1px;
+  border-right: 1px solid #999;
+  user-select: none;
+}
+
+.markdown-content .line-numbers-rows > span {
+  display: block;
+  counter-increment: linenumber;
+}
+
+.markdown-content .line-numbers-rows > span:before {
+  content: counter(linenumber);
+  color: #999;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+}
+
+/* Add smooth transitions between messages */
+.message-transition {
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.message-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.message-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Add a subtle hover effect to messages */
+.message-container {
+  transition: background-color 0.2s;
+  border-radius: 8px;
+  padding: 1px; /* Prevent margin collapse */
+}
+
+.message-container:hover {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+/* Add a subtle divider between messages */
+.message-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(128, 128, 128, 0.1),
+    transparent
+  );
+  margin: 1rem 0;
+}
+
+/* Updated styling for think blocks */
+.think-block {
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.think-block summary {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  background-color: rgba(128, 0, 128, 0.1);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  list-style: none; /* Remove default marker */
+  justify-content: space-between; /* Position elements */
+}
+
+/* Remove the default triangle marker */
+.think-block summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Style for the brain icon placeholder */
+.brain-icon-placeholder::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 0.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23a855f7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 4.5a2.5 2.5 0 0 0-4.96-.46 2.5 2.5 0 0 0-1.98 3 2.5 2.5 0 0 0-1.32 4.24 3 3 0 0 0 .34 5.58 2.5 2.5 0 0 0 2.96 3.08 2.5 2.5 0 0 0 4.91.05L12 20V4.5Z'%3E%3C/path%3E%3Cpath d='M16 8V5c0-1.1.9-2 2-2'%3E%3C/path%3E%3Cpath d='M12 13h4'%3E%3C/path%3E%3Cpath d='M12 18h6a2 2 0 0 1 2 2v1'%3E%3C/path%3E%3Cpath d='M12 8h8'%3E%3C/path%3E%3Cpath d='M20.5 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z'%3E%3C/path%3E%3Cpath d='M16.5 13a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z'%3E%3C/path%3E%3Cpath d='M20.5 21a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z'%3E%3C/path%3E%3Cpath d='M18.5 3a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z'%3E%3C/path%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.2s;
+}
+
+/* Style for the thinking label */
+.thinking-label {
+  flex-grow: 1;
+}
+
+/* Style for the arrow icon */
+.arrow-icon::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a855f7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'%3E%3C/path%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate arrow when open */
+.think-block[open] .arrow-icon::before {
+  transform: rotate(180deg);
+}
+
+.think-block[open] .brain-icon-placeholder::before {
+  transform: scale(1.2); /* Slightly enlarge the icon when open */
+}
+
+.think-content {
+  padding: 1rem;
+  background-color: rgba(128, 0, 128, 0.05);
+}
+
+/* Dark mode styles */
+.dark-mode .think-block summary {
+  background-color: rgba(168, 85, 247, 0.15);
+}
+
+.dark-mode .think-content {
+  background-color: rgba(168, 85, 247, 0.05);
+}
+
+/* Light mode styles */
+.light-mode .brain-icon-placeholder::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%238b5cf6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 4.5a2.5 2.5 0 0 0-4.96-.46 2.5 2.5 0 0 0-1.98 3 2.5 2.5 0 0 0-1.32 4.24 3 3 0 0 0 .34 5.58 2.5 2.5 0 0 0 2.96 3.08 2.5 2.5 0 0 0 4.91.05L12 20V4.5Z'%3E%3C/path%3E%3Cpath d='M16 8V5c0-1.1.9-2 2-2'%3E%3C/path%3E%3Cpath d='M12 13h4'%3E%3C/path%3E%3Cpath d='M12 18h6a2 2 0 0 1 2 2v1'%3E%3C/path%3E%3Cpath d='M12 8h8'%3E%3C/path%3E%3Cpath d='M20.5 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z'%3E%3C/path%3E%3Cpath d='M16.5 13a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z'%3E%3C/path%3E%3Cpath d='M20.5 21a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z'%3E%3C/path%3E%3Cpath d='M18.5 3a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.light-mode .arrow-icon::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238b5cf6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* Styling for the copy button */
+.copy-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.copy-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .copy-button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.light-mode .copy-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Clipboard icon */
+.clipboard-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a0aec0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'%3E%3C/path%3E%3Crect x='8' y='2' width='8' height='4' rx='1' ry='1'%3E%3C/rect%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Copied checkmark icon */
+.copied-icon {
+  color: #10b981;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Update code header to include space for the copy button */
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #343a40;
+  color: #f8f9fa;
+  font-size: 0.8rem;
+  font-family: monospace;
+}
+
+/* Add a script to handle copying from the rendered HTML */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.copy-success-message {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #10b981;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  animation: fadeIn 0.3s, fadeOut 0.3s 1.7s;
+  pointer-events: none;
+}
+
+/* Code actions container */
+.code-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Run code button */
+.run-code-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.run-code-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .run-code-button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.light-mode .run-code-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Run code icon */
+.run-code-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a0aec0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='5 3 19 12 5 21 5 3'%3E%3C/polygon%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Code block styling */
+.line-numbers {
+  counter-reset: line;
+  padding-left: 3.5em !important;
+  position: relative;
+}
+
+.line-numbers .line-number {
+  position: absolute;
+  left: 0;
+  width: 2.5em;
+  text-align: right;
+  color: #999;
+  font-size: 0.85em;
+  user-select: none;
+  opacity: 0.5;
+  padding-right: 0.5em;
+  border-right: 1px solid #ddd;
+  margin-right: 1em;
+}
+
+.dark .line-numbers .line-number {
+  color: #666;
+  border-right-color: #444;
+}
+
+/* Improve code readability in dark mode */
+.dark pre {
+  background-color: #1a1a1a !important;
+}
+
+.dark code[class*="language-"] {
+  text-shadow: none;
+}
+
+/* Add custom syntax highlighting styles */
+code[class*="language-"] {
+  color: #333;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  tab-size: 4;
+  hyphens: none;
+}
+
+.dark code[class*="language-"] {
+  color: #f8f8f2;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #8292a2;
+}
+
+.token.punctuation {
+  color: #f8f8f2;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+  color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: #e6db74;
+}
+
+.token.keyword {
+  color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+  color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+/* Prism syntax highlighting overrides */
+pre[class*="language-"],
+code[class*="language-"] {
+  color: #d4d4d4;
+  font-size: 13px;
+  text-shadow: none;
+  font-family: Menlo, Monaco, Consolas, "Andale Mono", "Ubuntu Mono", "Courier New", monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  background: #1e1e1e;
+}
+
+/* Light mode overrides */
+.bg-gray-100 pre[class*="language-"] {
+  background: #f5f5f5;
+}
+
+.bg-gray-100 code[class*="language-"] {
+  color: #333;
+}
+
+/* Token colors - Dark theme (default) */
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #608b4e;
+}
+
+.token.punctuation {
+  color: #ccc;
+}
+
+.token.tag,
+.token.attr-name,
+.token.namespace,
+.token.deleted {
+  color: #e2777a;
+}
+
+.token.function-name {
+  color: #6196cc;
+}
+
+.token.boolean,
+.token.number,
+.token.function {
+  color: #f08d49;
+}
+
+.token.property,
+.token.class-name,
+.token.constant,
+.token.symbol {
+  color: #f8c555;
+}
+
+.token.selector,
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.builtin {
+  color: #cc99cd;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+  color: #7ec699;
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+  color: #67cdcc;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.inserted {
+  color: green;
+}
+
+/* Light mode token colors */
+.bg-gray-100 .token.comment,
+.bg-gray-100 .token.block-comment,
+.bg-gray-100 .token.prolog,
+.bg-gray-100 .token.doctype,
+.bg-gray-100 .token.cdata {
+  color: #008000;
+}
+
+.bg-gray-100 .token.punctuation {
+  color: #666;
+}
+
+.bg-gray-100 .token.tag,
+.bg-gray-100 .token.attr-name,
+.bg-gray-100 .token.namespace,
+.bg-gray-100 .token.deleted {
+  color: #905;
+}
+
+.bg-gray-100 .token.function-name,
+.bg-gray-100 .token.function {
+  color: #9a6e3a;
+}
+
+.bg-gray-100 .token.boolean,
+.bg-gray-100 .token.number {
+  color: #0086b3;
+}
+
+.bg-gray-100 .token.property,
+.bg-gray-100 .token.class-name,
+.bg-gray-100 .token.constant,
+.bg-gray-100 .token.symbol {
+  color: #0086b3;
+}
+
+.bg-gray-100 .token.selector,
+.bg-gray-100 .token.important,
+.bg-gray-100 .token.atrule,
+.bg-gray-100 .token.keyword,
+.bg-gray-100 .token.builtin {
+  color: #0000ff;
+}
+
+.bg-gray-100 .token.string,
+.bg-gray-100 .token.char,
+.bg-gray-100 .token.attr-value,
+.bg-gray-100 .token.regex,
+.bg-gray-100 .token.variable {
+  color: #0a8;
+}
+
+.bg-gray-100 .token.operator,
+.bg-gray-100 .token.entity,
+.bg-gray-100 .token.url {
+  color: #9a6e3a;
+}
+
+/* Add this to your App.css file */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #2D2E33;
+  border-radius: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(59, 130, 246, 0.5);
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(59, 130, 246, 0.7);
+}
+
+/* Light mode scrollbar */
+.bg-white .custom-scrollbar::-webkit-scrollbar-track {
+  background: #e5e7eb;
+}
+.bg-white .custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(59, 130, 246, 0.4);
+}
+.bg-white .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(59, 130, 246, 0.6);
+}
