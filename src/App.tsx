@@ -166,7 +166,6 @@ function App() {
         const reader = response.body.getReader();
         const decoder = new TextDecoder("utf-8");
         let accumulatedContent = "";
-        let currentThinkContent = "";
         let isInsideThinkTag = false;
 
         while (true) {
