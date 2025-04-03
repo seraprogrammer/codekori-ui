@@ -123,6 +123,22 @@ function App() {
     const startTime = Date.now();
 
     try {
+      console.log("Sending request to server...");
+
+      // Create a structured prompt that includes conversation history
+      let fullPrompt = "Previous conversation:\n";
+
+      // Add all previous messages except the most recent user message
+      for (let i = 0; i < newMessages.length - 1; i++) {
+        const msg = newMessages[i];
+        fullPrompt += `${msg.role === "user" ? "User" : "Assistant"}: ${
+          msg.content
+        }\n\n`;
+      }
+
+      // Add the current user query
+      fullPrompt += `User: ${input}\n\nAssistant:`;
+
       const response = await fetch(
         "https://olova-research-server.onrender.com/api/get_response",
         {
@@ -133,11 +149,13 @@ function App() {
           body: JSON.stringify({
             provider: selectedModel.provider,
             model: selectedModel.model,
-            message: input,
-            stream: true, // Request streaming if available
+            message: fullPrompt, // Send the full conversation as the message
+            stream: true,
           }),
         }
       );
+
+      console.log("Response received:", response.status, response.statusText);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -148,65 +166,76 @@ function App() {
         const reader = response.body.getReader();
         const decoder = new TextDecoder("utf-8");
         let accumulatedContent = "";
+        let currentThinkContent = "";
+        let isInsideThinkTag = false;
 
         while (true) {
           const { done, value } = await reader.read();
 
           if (done) {
+            // If we're still inside a think tag, close it
+            if (isInsideThinkTag) {
+              accumulatedContent += "</think>";
+            }
             break;
           }
 
-          // Decode the chunk and add to accumulated content
           const chunk = decoder.decode(value, { stream: true });
-          accumulatedContent += chunk;
+          console.log("Received chunk:", chunk);
 
-          // Update the message with the accumulated content
-          setMessages((prev) => {
-            // Create a new array to avoid reference issues
-            const updated = [...prev];
-            if (updated.length > placeholderIndex) {
-              updated[placeholderIndex] = {
-                role: "assistant",
-                content: accumulatedContent,
-              };
+          // Process the chunk character by character
+          for (let i = 0; i < chunk.length; i++) {
+            const char = chunk[i];
+
+            // Check for opening think tag
+            if (chunk.slice(i, i + 7) === "<think>") {
+              isInsideThinkTag = true;
+              accumulatedContent += "<think>";
+              i += 6; // Skip the rest of the tag
+              continue;
             }
-            return updated;
-          });
 
-          // Update response time
-          setResponseTime(Date.now() - startTime);
-        }
-      } else {
-        // Fallback for non-streaming response
-        const contentType = response.headers.get("content-type");
-        let responseData;
+            // Check for closing think tag
+            if (chunk.slice(i, i + 8) === "</think>") {
+              isInsideThinkTag = false;
+              accumulatedContent += "</think>";
+              i += 7; // Skip the rest of the tag
+              continue;
+            }
 
-        if (contentType && contentType.includes("application/json")) {
-          try {
-            responseData = await response.json();
-          } catch (jsonError) {
-            const textResponse = await response.text();
-            responseData = { response: textResponse };
+            // Add character to accumulated content
+            accumulatedContent += char;
+
+            // Update the message state more frequently
+            if (char === "." || char === "!" || char === "?" || char === "\n") {
+              setMessages((prev) => {
+                const updated = [...prev];
+                if (updated.length > placeholderIndex) {
+                  updated[placeholderIndex] = {
+                    role: "assistant",
+                    content: accumulatedContent,
+                  };
+                }
+                return updated;
+              });
+            }
           }
-        } else {
-          const textResponse = await response.text();
-          responseData = { response: textResponse };
         }
 
+        // Final update with complete content
         setMessages((prev) => {
           const updated = [...prev];
           if (updated.length > placeholderIndex) {
             updated[placeholderIndex] = {
               role: "assistant",
-              content:
-                responseData.response || "Sorry, I couldn't get a response.",
+              content: accumulatedContent,
             };
           }
           return updated;
         });
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Request failed:", error);
       setMessages((prev) => {
         const updated = [...prev];
         if (updated.length > placeholderIndex) {
@@ -219,9 +248,7 @@ function App() {
       });
     } finally {
       setIsLoading(false);
-      // Final response time update
       setResponseTime(Date.now() - startTime);
-      // Ensure the final state of messages is saved
       setMessages((currentMessages) => {
         syncMessagesToLocalStorage(currentMessages);
         return currentMessages;

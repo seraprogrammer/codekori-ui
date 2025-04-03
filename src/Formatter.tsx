@@ -29,6 +29,27 @@ interface FormatterProps {
     | "materialLight";
 }
 
+interface CodeProps {
+  node?: any;
+  inline?: boolean;
+  className?: string;
+  children: React.ReactNode;
+  [key: string]: any;
+}
+
+interface ChildrenProps {
+  children: React.ReactNode;
+}
+
+interface LinkProps extends ChildrenProps {
+  href: string;
+}
+
+interface ImageProps {
+  src: string;
+  alt: string;
+}
+
 function Formatter({
   content,
   darkMode,
@@ -241,7 +262,7 @@ function Formatter({
 
   // Markdown component configuration
   const markdownComponents = {
-    code({ node, inline, className, children, ...props }: any) {
+    code({ node, inline, className, children, ...props }: CodeProps) {
       const match = /language-(\w+)(:([^}]+))?/.exec(className || "");
       const codeContent = String(children).replace(/\n$/, "");
       const codeHash = hashCode(codeContent);
@@ -462,30 +483,30 @@ function Formatter({
         </code>
       );
     },
-    h1: ({ children }: any) => (
+    h1: ({ children }: ChildrenProps) => (
       <h1 className="text-2xl font-bold my-4 pb-2 border-b border-gray-300 dark:border-gray-700">
         {children}
       </h1>
     ),
-    h2: ({ children }: any) => (
+    h2: ({ children }: ChildrenProps) => (
       <h2 className="text-xl font-bold my-3 pb-1 border-b border-gray-200 dark:border-gray-800">
         {children}
       </h2>
     ),
-    h3: ({ children }: any) => (
+    h3: ({ children }: ChildrenProps) => (
       <h3 className="text-lg font-bold my-2">{children}</h3>
     ),
-    p: ({ children }: any) => (
+    p: ({ children }: ChildrenProps) => (
       <p className="my-2 leading-relaxed">{children}</p>
     ),
-    ul: ({ children }: any) => (
+    ul: ({ children }: ChildrenProps) => (
       <ul className="list-disc pl-6 my-2 space-y-1">{children}</ul>
     ),
-    ol: ({ children }: any) => (
+    ol: ({ children }: ChildrenProps) => (
       <ol className="list-decimal pl-6 my-2 space-y-1">{children}</ol>
     ),
-    li: ({ children }: any) => <li className="my-1">{children}</li>,
-    a: ({ href, children }: any) => (
+    li: ({ children }: ChildrenProps) => <li className="my-1">{children}</li>,
+    a: ({ href, children }: LinkProps) => (
       <a
         href={href}
         className={`${
@@ -499,7 +520,7 @@ function Formatter({
         {children}
       </a>
     ),
-    blockquote: ({ children }: any) => (
+    blockquote: ({ children }: ChildrenProps) => (
       <blockquote
         className={`border-l-4 ${
           darkMode
@@ -510,7 +531,7 @@ function Formatter({
         {children}
       </blockquote>
     ),
-    table: ({ children }: any) => (
+    table: ({ children }: ChildrenProps) => (
       <div className="overflow-x-auto my-4">
         <table
           className={`min-w-full ${
@@ -521,13 +542,13 @@ function Formatter({
         </table>
       </div>
     ),
-    thead: ({ children }: any) => (
+    thead: ({ children }: ChildrenProps) => (
       <thead className={darkMode ? "bg-gray-800" : "bg-gray-100"}>
         {children}
       </thead>
     ),
-    tbody: ({ children }: any) => <tbody>{children}</tbody>,
-    tr: ({ children }: any) => (
+    tbody: ({ children }: ChildrenProps) => <tbody>{children}</tbody>,
+    tr: ({ children }: ChildrenProps) => (
       <tr
         className={`${
           darkMode ? "hover:bg-gray-800" : "hover:bg-gray-50"
@@ -536,7 +557,7 @@ function Formatter({
         {children}
       </tr>
     ),
-    th: ({ children }: any) => (
+    th: ({ children }: ChildrenProps) => (
       <th
         className={`px-4 py-2 ${
           darkMode ? "border-gray-700" : "border-gray-200"
@@ -545,7 +566,7 @@ function Formatter({
         {children}
       </th>
     ),
-    td: ({ children }: any) => (
+    td: ({ children }: ChildrenProps) => (
       <td
         className={`px-4 py-2 ${
           darkMode ? "border-gray-700" : "border-gray-200"
@@ -559,7 +580,7 @@ function Formatter({
         className={`my-4 ${darkMode ? "border-gray-700" : "border-gray-200"}`}
       />
     ),
-    img: ({ src, alt }: any) => (
+    img: ({ src, alt }: ImageProps) => (
       <img
         src={src}
         alt={alt}
@@ -567,7 +588,7 @@ function Formatter({
         loading="lazy"
       />
     ),
-    pre: ({ children }: any) => (
+    pre: ({ children }: ChildrenProps) => (
       <pre className="my-4 rounded-lg overflow-hidden">{children}</pre>
     ),
   };

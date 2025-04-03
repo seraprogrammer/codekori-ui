@@ -70,6 +70,7 @@ const Models: React.FC<ModelsProps> = ({
     { provider: "Glider", model: "chat-llama-3-1-70b" },
     { provider: "Glider", model: "chat-llama-3-1-8b" },
     { provider: "Glider", model: "chat-llama-3-2-3b" },
+    { provider: "Glider", model: "deepseek-ai/DeepSeek-R1" },
     { provider: "Dynaspark", model: "DynaSpark" },
     // Qwen models
     { provider: "Qwen_Qwen_2_5_Max", model: "Qwen_QVQ_72B" },
@@ -79,7 +80,7 @@ const Models: React.FC<ModelsProps> = ({
     { provider: "Qwen_Qwen_2_5_Max", model: "Qwen_Qwen_2_72B" },
 
     // Blackbox models
-    { provider: "Blackbox", model: "blackboxai" },
+    { provider: "Blackbox", model: "blackboxai-pro" },
     { provider: "Blackbox", model: "gpt-4o-mini" },
     { provider: "Blackbox", model: "GPT-4o" },
     { provider: "Blackbox", model: "o1" },
